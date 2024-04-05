@@ -31,11 +31,11 @@ int main()
 	cout<<"\t\tStack"<<endl;
 	Stack s;
 	int ch;
-	cout<<"Enter the choice\n1.PUSH\n2.POP\n3.DISPLAY\n";
-	cin>>ch;
 	int t=1;
 	while(t)
 	{
+	cout<<"Enter the choice\n1.PUSH\n2.POP\n3.DISPLAY\n";
+	cin>>ch;
 	switch(ch)
 		{
 			case 1:
