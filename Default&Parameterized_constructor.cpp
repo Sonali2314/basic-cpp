@@ -10,13 +10,13 @@ class Box{
         height=5;
         width=5;
     }
-    int getData(int l,int h,int w)
+    public: Box(int l,int h,int w)
     {
       length=l;
       height=h;
       width=w;
     }
-    void Display()
+    public: void Display()
     {
         cout<<"Length : "<<length<<"\n";
         cout<<"Height : "<<height<<"\n";
@@ -39,8 +39,8 @@ int main()
     cout<<"Enter the Width : ";
     cin>>w;
     cout<<"Parameterized Constructor :\n";
-    b1.getData(l,h,w);
-    b1.Display();
+    Box b2(l,h,w);
+    b2.Display();
     
     
 }
