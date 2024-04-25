@@ -3,9 +3,9 @@
 #define pi 3.14
 using namespace std;
 class Circle{
-	int centerX;
-	int centerY;
-	int radius,circumference,area;
+	double centerX;
+	double centerY;
+	protected:double radius,circumference,area;
 	public: 
 		Circle()
 		{
@@ -15,7 +15,7 @@ class Circle{
 			calcCirumference();
 			calcArea();
 		}
-		Circle(int cx,int cy)
+		Circle(double cx,double cy)
 		{
 			centerX=cx;
 			centerY=cy;
@@ -23,7 +23,7 @@ class Circle{
 			calcCirumference();
 			calcArea();
 		}
-		Circle(int cx,int cy,int r)
+		Circle(double cx,double cy,double r)
 		{
 			centerX=cx;
 			centerY=cy;
@@ -31,45 +31,80 @@ class Circle{
 			calcCirumference();
 			calcArea();
 		}
-		int calcCirumference()
+		void calcCirumference()
 		{
 			circumference=2*pi*radius;
-			return circumference;
 		}
-		int calcArea()
+		void calcArea()
 		{
 			area=pi*radius*radius;
-			return area;
 		}
-		void getArea(int a)
+		void disArea()
 		{
-			area=a;
+			cout<<area<<endl;
 		}
-		void getCirumference(int c)
+		void disCirumference()
 		{
-			circumference=c;
+			cout<<circumference<<endl;
 		}
 };
-class Line{
-	int x1,y1,x2,y2,slop,interceptX,interceptY;
+class Line:public Circle{
+	double x1,y1,x2,y2,slop,interceptX,interceptY;
 	public:
-		void getPt1(int x,int y)
+		void getPt1(double x,double y)
 		{
 			x1=x;
 			y1=y;
 		}
-		void getPt2(int x,int y)
+		void getPt2(double x,double y)
 		{
 			x2=x;
 			y2=y;
 		}
-		int slop(int X1,int Y1,int X2,int Y2)
+		void getdoubleercept(double x,double y)
+		{
+			interceptX=x;
+			interceptY=y;
+		}
+		void calSlop(double X1,double Y1,double X2,double Y2)
 		{
 			slop=(Y2-Y1)/(X2-X1);
 		}
-		
+		void isTangent(double x1,double y1,double slop)
+		{
+			double c=y1-slop*x1;
+			double tan=(radius*radius)*((slop*slop)+1);
+			if(c*c==tan)
+			{
+				cout<<"LINE IS TANGENT ! "<<endl;
+			}
+			else
+			{
+				cout<<"LINE IS NOT TANGENT ! "<<endl;
+			}
+		}
+		void isTangent(double x,double y,double cx,double cy)
+		{
+			int dist=sqrt(pow((cx-x),2)+pow((cy-y),2));
+			if(radius==dist)
+			{
+				cout<<"LINE IS TANGENT ! "<<endl;
+			}
+			else
+			{
+				cout<<"LINE IS NOT TANGENT ! "<<endl;
+			}
+		}
 };
 int main()
 {
-	
+	Circle C(0,0,10);
+	C.disArea();
+	C.disCirumference();
+	Line L;
+	L.getPt1(1,2);
+	L.getPt2(5,10);
+	L.isTangent(0,10,2);
+	L.isTangent(4,5,0,0);
+
 }
